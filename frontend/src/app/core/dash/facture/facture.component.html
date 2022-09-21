@@ -1,0 +1,326 @@
+
+<div class="container text-left">
+  <div class="">
+    <div class="row">
+      <div class="col-sm">
+        <div class="dashboard-report-card red">
+          <div class="card-content">
+            <div class="card-content">
+              <span class="card-title fs-6">SOLDE CREANCE (DT)</span>
+              <span class="card-sub-title fs-3">{{soldeCr2}}</span>
+              <div class="d-flex align-items-center">
+                <span class="font-12 color-body text-nowrap">Montant avant pénalité </span>
+              </div>
+            </div>
+            <div class="card-media">
+              <i class="fa-solid fa-money-bill" ></i>
+            </div>
+          </div>
+        </div>      </div>
+      <div class="col-sm">
+        <div class="dashboard-report-card purple">
+          <div class="card-content">
+            <div class="card-content">
+              <span class="card-title fs-6">MONTANT CREANCE (DT)</span>
+              <span class="card-sub-title fs-3">{{montCr}}</span>
+              <div class="d-flex align-items-center">
+                <span class="font-12 color-body text-nowrap">Montant net à payer </span>
+              </div>
+            </div>
+            <div class="card-media">
+              <i class="fa-solid fa-eye" ></i>
+            </div>
+          </div>
+        </div>      </div>
+        <div class="col-sm">
+          <div class="dashboard-report-card success">
+            <div class="card-content">
+              <div class="card-content">
+                <span class="card-title fs-6">POURCENTAGE</span>
+                <span class="card-sub-title fs-3">12%</span>
+                <div class="d-flex align-items-center">
+                  <span class="font-12 color-body text-nowrap">Pourcentage de pénalité </span>
+                </div>
+              </div>
+              <div class="card-media">
+                <i class="fa-solid fa-eye" ></i>
+              </div>
+            </div>
+          </div>      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="margin text-left">
+
+        <mat-card class="card">
+       
+          <mat-card-content>
+            
+              <mat-card-title>Client</mat-card-title>
+              <hr>
+              <h3>Nom : {{client.fullName}} </h3> 
+              <h3>Contact :
+                <li>Tél. fixe : {{client.tel1}}</li>
+                <li>Tél. mobile : {{client.tel2}}</li>
+                <li>Adresse. mobile : {{client.adresse1}}</li>
+
+              </h3>
+              <h3>Profile : {{client.profile}} </h3> 
+
+          
+          <mat-divider>
+          </mat-divider>
+          </mat-card-content>
+        
+          <mat-card-actions>
+            <button mat-button  color="primary"><br></button>
+          </mat-card-actions>
+        
+        </mat-card>
+        </div>    </div>
+    <div class="col-8">
+
+       
+<ng-template #editCompanyModal >
+  <div class="temp">
+   <form  class="contact-form" autocomplete="none"  [formGroup]="factureForm" (ngSubmit)="createFactureController()">
+ 
+     <mat-card >
+       
+   <p>
+     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+         <mat-label>Num Facture</mat-label>
+         <input formControlName="numFacture" type="text" matInput placeholder="Enter your numFacture">
+      
+       </mat-form-field>
+       <small class="text-danger"
+       *ngIf="errMsg">
+       {{errMsg}}
+   </small>
+   </p>
+   <p>
+     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+         <mat-label>identifiant</mat-label>
+         <input formControlName="identifiant" type="text" matInput placeholder="Enter your identifiant">
+       </mat-form-field>
+       <small class="text-danger"
+       *ngIf="errMsg">
+       {{errMsg}}
+   </small>
+   </p>
+   
+   <p>
+     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+         <mat-label>numTelephone</mat-label>
+         <input formControlName="numTelephone" type="text" matInput placeholder="Enter your numTelephone">
+       </mat-form-field>
+       <small class="text-danger"
+       *ngIf="errMsg">
+       {{errMsg}}
+   </small>
+   </p>
+   
+   <p>
+     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+         <mat-label>refFacture</mat-label>
+         <input  formControlName="refFacture" type="text" matInput placeholder="Enter refFacture">
+       </mat-form-field>
+       <small class="text-danger"
+       *ngIf="errMsg">
+       {{errMsg}}
+   </small>  </p>
+   <p>
+     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+         <mat-label>nomClient</mat-label>
+         <input  formControlName="nomClient" type="text" matInput placeholder="Enter nomClient">
+       </mat-form-field>
+       <small class="text-danger"
+       *ngIf="errMsg">
+       {{errMsg}}
+   </small>
+   </p>
+   <div>
+   <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+     <mat-label>adresse</mat-label>
+     <input  formControlName="adresse" type="text" matInput placeholder="Enter adresse">
+   
+   </mat-form-field>
+   <small class="text-danger"
+   *ngIf="errMsg">
+   {{errMsg}}
+ </small>
+   </div>
+   
+   <div>
+     <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+       <mat-label>pointVente</mat-label>
+       <input  formControlName="pointVente" type="text" matInput placeholder="Enter pointVente">
+     
+     </mat-form-field>
+     <small class="text-danger"
+     *ngIf="errMsg">
+     {{errMsg}}
+   </small>
+     </div>
+ 
+     <div>
+       <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+         <mat-label>DPC</mat-label>
+         <input  formControlName="DPC" type="text" matInput placeholder="Enter DPC">
+       
+       </mat-form-field>
+       <small class="text-danger"
+       *ngIf="errMsg">
+       {{errMsg}}
+     </small>
+       </div>
+       <div>
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+          <mat-label>CodeClient</mat-label>
+          <input  formControlName="codeClient" type="text" matInput placeholder="Enter CodeClient">
+        
+        </mat-form-field>
+        <small class="text-danger"
+        *ngIf="errMsg">
+        {{errMsg}}
+      </small>
+        </div>
+       <div>
+         <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+           <mat-label>montantCreance</mat-label>
+           <input  formControlName="montantCreance" type="text" matInput placeholder="Enter montantCreance">
+         
+         </mat-form-field>
+         <small class="text-danger"
+         *ngIf="errMsg">
+         {{errMsg}}
+       </small>
+         </div>
+ 
+         <div>
+           <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+             <mat-label>soldeCreance</mat-label>
+             <input  formControlName="soldeCreance" type="text" matInput placeholder="Enter soldeCreance">
+           
+           </mat-form-field>
+           <small class="text-danger"
+           *ngIf="errMsg">
+           {{errMsg}}
+         </small>
+           </div>
+ 
+      
+ 
+          
+ 
+   <div><button type="submit" mat-raised-button color="primary">Submit</button></div>
+   
+   </mat-card>
+     </form>
+   </div>
+ </ng-template>
+ 
+ 
+      
+      
+      
+      <div class="container" >
+        <mat-form-field appearance="standard">
+        <mat-label>Search</mat-label>
+        
+        <input matInput (keyup)="applyFilter($event)" placeholder="Project Name" #input>
+      </mat-form-field>
+      <button mat-icon-button aria-label="your label" color="primary" class="position"
+      type="submit" (click)="openCompanyDetailsDialog()"
+      >
+          <mat-icon  class="bt"> library_add</mat-icon>
+          </button>
+      <div class="mat-elevation-z8" >
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- Name Column -->
+          <ng-container matColumnDef="numFacture">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> numFacture </th>
+            <td mat-cell *matCellDef="let row"> {{row.numFacture}} </td>
+          </ng-container>
+          <ng-container matColumnDef="identifiant">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> identifiant </th>
+            <td mat-cell  *matCellDef="let row"> {{row.identifiant}} </td>
+          </ng-container>
+       
+        
+          <ng-container matColumnDef="refFacture">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> refFacture </th>
+            <td mat-cell *matCellDef="let row"> {{row.refFacture}} </td>
+          </ng-container>
+       
+       
+         
+         
+          <ng-container matColumnDef="pointVente">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> pointVente </th>
+            <td mat-cell *matCellDef="let row"> {{row.pointVente}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="DPC">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  DPC </th>
+            <td mat-cell *matCellDef="let row"> {{row.DPC}} </td>
+          </ng-container>
+          <ng-container matColumnDef="montantCreance">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> montantCreance </th>
+            <td mat-cell *matCellDef="let row"> {{row.montantCreance}} </td>
+          </ng-container>
+          <ng-container matColumnDef="soldeCreance">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  soldeCreance </th>
+            <td mat-cell *matCellDef="let row"> {{row.soldeCreance}} </td>
+          </ng-container>
+          <!-- Fruit Column -->
+      
+      
+      
+          <ng-container matColumnDef="Actions" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row; let i = index;" class="action">
+            
+             
+              <button mat-icon-button color="info"  >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteFactureController(row._id,i)" >
+                <mat-icon>delete</mat-icon>
+              </button>
+              
+              <!-- <button mat-icon-button class="tt"  (click)="startProject(row.project_path,row._id)" >
+                <mat-icon>arrow_right_alt</mat-icon>
+              </button> -->
+          
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+      </div>
+      
+      
+          </div>
+   
+  </div>
+
+</div>
+

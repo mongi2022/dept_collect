@@ -1,0 +1,99 @@
+<!-- <main class="main">
+  <div class="container">
+      <div class="content">
+          <div class="word">
+              <h2>Learn to code by watching others</h2>
+              <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is
+                  great, but understanding how developers think is invaluable.</p>
+          </div>
+          <div class="form">
+            <div class="ad">
+              <p>Try it free 7 days
+                  <span>Team</span>
+              </p>
+          </div>
+              <form  class="contact-form"  [formGroup]="teamForm" (ngSubmit)="AddteamController()">
+                  <div class="input-control input-2">
+
+                      <input formControlName="name" type="text"  placeholder="Name" >
+                  
+                      <div class="error" ></div>
+
+
+                  </div>
+                  <div class="input-control input-2">
+                  
+                    <input formControlName="creation_date" type="date"  placeholder="creation date" >
+
+                    <div class="error" ></div>
+
+                </div>
+                <div class="input-control input-2">
+
+                  <input formControlName="logo"  type="file" id="upload" (change)="selectVideo($event)"
+                    
+                  required placeholder="logo" >
+
+                  <div class="error" ></div>
+
+
+              </div>
+                       <div class="btn">
+                      <button type="submit" id="submit">SUBMIT</button>
+                  </div>
+                
+              </form>
+          </div>
+      </div>
+  </div>
+</main>
+ -->
+
+
+ <div class="container">
+    <div class="row">
+      <div class="col-sm">
+      </div>
+      <div class="col-6">
+        <form  class="contact-form"  [formGroup]="teamForm" (ngSubmit)="AddteamController()">
+            <mat-card >
+        <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Team Name</mat-label>
+                <input formControlName="name"  type="text" matInput placeholder="Enter name">
+              
+              </mat-form-field><br>
+              <small class="text-danger"
+              *ngIf="errMsg">
+              {{errMsg}}
+          </small>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Creation Date</mat-label>
+                <input formControlName="creation_date" type="date" matInput placeholder="Enter creation Date">
+              </mat-form-field>
+          </p>
+          
+          <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Logo</mat-label>
+                <input    type="text" 
+                 matInput >
+                 <input formControlName="logo" (change)="selectVideo($event)" type="file" id="upload">
+              </mat-form-field>
+          </p>
+        
+      
+     
+  
+        
+          <div><button type="submit" mat-raised-button color="primary">Submit</button></div>
+        
+        </mat-card>
+            </form>      </div>
+      <div class="col">
+      </div>
+    </div>
+ 
+  </div>

@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+  }
+  
+
+  td, th {
+    width: 25%;
+  }
+  .tt{
+    color: #24B1CC;
+  }
+  .position{
+    float: right;
+   margin-top: -6%;
+  
+  
+  }

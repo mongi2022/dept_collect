@@ -1,0 +1,251 @@
+<h1 class="text-center">Liste des clients</h1>
+
+
+<ng-template #editCompanyModal >
+ <div class="temp">
+  <form  class="contact-form" autocomplete="none"  [formGroup]="clientForm" (ngSubmit)="createClientController()">
+
+    <mat-card >
+      
+  <p>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>Code Client</mat-label>
+        <input formControlName="codeClient" type="text" matInput placeholder="Enter your code">
+     
+      </mat-form-field>
+      <small class="text-danger"
+      *ngIf="errMsg">
+      {{errMsg}}
+  </small>
+  </p>
+  <p>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>Name</mat-label>
+        <input formControlName="fullName" type="text" matInput placeholder="Enter your name">
+      </mat-form-field>
+      <small class="text-danger"
+      *ngIf="errMsg">
+      {{errMsg}}
+  </small>
+  </p>
+  
+  <p>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>Age</mat-label>
+        <input formControlName="age" type="text" matInput placeholder="Enter your age">
+      </mat-form-field>
+      <small class="text-danger"
+      *ngIf="errMsg">
+      {{errMsg}}
+  </small>
+  </p>
+  
+  <p>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>adresse1</mat-label>
+        <input  formControlName="adresse1" type="text" matInput placeholder="Enter adresse1">
+      </mat-form-field>
+      <small class="text-danger"
+      *ngIf="errMsg">
+      {{errMsg}}
+  </small>  </p>
+  <p>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>Adresse2</mat-label>
+        <input  formControlName="adresse2" type="text" matInput placeholder="Enter adresse2">
+      </mat-form-field>
+      <small class="text-danger"
+      *ngIf="errMsg">
+      {{errMsg}}
+  </small>
+  </p>
+  <div>
+  <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+    <mat-label>Tel Fixe</mat-label>
+    <input  formControlName="tel1" type="text" matInput placeholder="Enter tel fixe">
+  
+  </mat-form-field>
+  <small class="text-danger"
+  *ngIf="errMsg">
+  {{errMsg}}
+</small>
+  </div>
+  
+  <div>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+      <mat-label>Tel Mobile</mat-label>
+      <input  formControlName="tel2" type="text" matInput placeholder="Enter tel mobile">
+    
+    </mat-form-field>
+    <small class="text-danger"
+    *ngIf="errMsg">
+    {{errMsg}}
+  </small>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+        <mat-label>CIN</mat-label>
+        <input  formControlName="cin" type="text" matInput placeholder="Enter cin">
+      
+      </mat-form-field>
+      <small class="text-danger"
+      *ngIf="errMsg">
+      {{errMsg}}
+    </small>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+          <mat-label>Profile</mat-label>
+          <input  formControlName="profile" type="text" matInput placeholder="Enter profile">
+        
+        </mat-form-field>
+        <small class="text-danger"
+        *ngIf="errMsg">
+        {{errMsg}}
+      </small>
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+            <mat-label>Email</mat-label>
+            <input  formControlName="email" type="text" matInput placeholder="Enter email">
+          
+          </mat-form-field>
+          <small class="text-danger"
+          *ngIf="errMsg">
+          {{errMsg}}
+        </small>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+              <mat-label>Password</mat-label>
+              <input  formControlName="password" type="text" matInput placeholder="Enter password">
+            
+            </mat-form-field>
+            <small class="text-danger"
+            *ngIf="errMsg">
+            {{errMsg}}
+          </small>
+            </div>
+
+            <div>
+              <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Mat Fiscal</mat-label>
+                <input  formControlName="matFiscal" type="text" matInput placeholder="Enter matFiscal">
+              
+              </mat-form-field>
+              <small class="text-danger"
+              *ngIf="errMsg">
+              {{errMsg}}
+            </small>
+              </div>
+
+  <div><button type="submit" mat-raised-button color="primary">Submit</button></div>
+  
+  </mat-card>
+    </form>
+  </div>
+</ng-template>
+
+
+
+
+
+<div class="container" >
+	<mat-form-field appearance="standard">
+  <mat-label>Search</mat-label>
+
+  <input matInput (keyup)="applyFilter($event)" placeholder="Project Name" #input>
+</mat-form-field>
+<button mat-icon-button aria-label="your label" color="primary" class="position"
+type="submit" (click)="openCompanyDetailsDialog()"
+>
+    <mat-icon > library_add</mat-icon>
+    </button>
+<div class="mat-elevation-z8" >
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Name Column -->
+    <ng-container matColumnDef="CodeClient">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Code Client </th>
+      <td mat-cell *matCellDef="let row"> {{row.codeClient}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell  *matCellDef="let row"> {{row.fullName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+      <td mat-cell *matCellDef="let row"> {{row.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Adresse1">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse1 </th>
+      <td mat-cell *matCellDef="let row"> {{row.adresse1}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Adresse2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse2 </th>
+      <td mat-cell *matCellDef="let row"> {{row.adresse2}} </td>
+    </ng-container>
+    <ng-container matColumnDef="CIN">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> CIN </th>
+      <td mat-cell *matCellDef="let row"> {{row.cin}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell  *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Mat Fiscal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  Mat Fiscal </th>
+      <td mat-cell *matCellDef="let row"> {{row.matFiscal}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Profile">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  Profile </th>
+      <td mat-cell *matCellDef="let row"> {{row.profile}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Tel1">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  Tel1 </th>
+      <td mat-cell *matCellDef="let row"> {{row.tel1}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Tel2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  Tel2 </th>
+      <td mat-cell *matCellDef="let row"> {{row.tel2}} </td>
+    </ng-container>
+    <!-- Fruit Column -->
+
+    <ng-container matColumnDef="Actions" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let row; let i = index;" class="action">
+
+
+        <button mat-icon-button color="info"  >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteProjectController(row.id)" >
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <button mat-icon-button class="tt"  (click)="getFactureClient(row.client,i)" >
+          <a>voir factures</a>
+        </button>
+
+
+      </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+</div>

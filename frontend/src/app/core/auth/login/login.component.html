@@ -1,0 +1,38 @@
+
+<form class="login" [formGroup]="loginForm" (ngSubmit)="loginController()">
+
+<div class="form-wraper">
+	<div class="form-container card">
+	  <div class="form-header">
+		<img src="./../../assets/car-key.png"  class="main-lock-icon" alt="">
+	  </div>
+  
+	  <div class="form-body">
+		<mat-form-field class="justifier">
+			<input matInput placeholder="User" type="text"  formControlName="email" text="email" class="form-input">
+
+		</mat-form-field>
+		<mat-form-field class="justifier">
+			<input matInput placeholder="Tel" type="text"  formControlName="tel" text="tel" class="form-input">
+
+		</mat-form-field>
+		<mat-form-field class="justifier">
+			<input matInput placeholder="Password" type="password"  formControlName="password" text="password" class="form-input">
+		</mat-form-field>
+	  </div>
+  
+	  <div class="form-footer">
+		  <button id="btn" mat-raised-button class="btn custom-btn"> 
+			<mat-icon>input</mat-icon>
+			Login
+		  </button>
+		 
+		 
+	  </div>
+	  <div class="additional-link">
+		<a routerLink="/signup">No Account? <strong>Create one here</strong></a>
+	  </div>
+	</div>
+  </div>
+</form>
+  

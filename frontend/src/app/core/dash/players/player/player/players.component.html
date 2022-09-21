@@ -1,0 +1,67 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+      </div>
+      <div class="col-6">
+        <form action="" class="contact-form" autocomplete="none" [formGroup]="playerForm" (ngSubmit)="AddPlayerController()">
+
+            <mat-card >
+        <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Player Name</mat-label>
+                <input formControlName="fullname"  type="text" matInput placeholder="Enter your name">
+              </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Birth Date</mat-label>
+                <input formControlName="birth_date" type="date" matInput placeholder="Enter Birth Date">
+              </mat-form-field>
+          </p>
+          
+          <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Picture</mat-label>
+                <input    type="text" 
+                 matInput >
+                 <input formControlName="picture" (change)="selectVideo($event)" type="file" id="upload">
+              </mat-form-field>
+          </p>
+        
+          <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Position</mat-label>
+                <input  formControlName="position" type="text" matInput placeholder="Enter position">
+              </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+                <mat-label>Number</mat-label>
+                <input  formControlName="number" type="number" matInput placeholder="Enter number">
+              </mat-form-field>
+          </p>
+          <div>
+          <mat-form-field appearance="outline" [hideRequiredMarker]="true">
+            <mat-label>Teams</mat-label>
+            <mat-select >
+              <mat-option *ngFor="let t of teams; let i=index" [value]="t._id" (click)="getid(i)">
+                
+                {{t.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;	<mat-icon><img src="" width="30"></mat-icon>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+          <div><button type="submit" mat-raised-button color="primary">Submit</button></div>
+        
+        </mat-card>
+            </form>      </div>
+      <div class="col">
+      </div>
+    </div>
+ 
+  </div>
+
+
